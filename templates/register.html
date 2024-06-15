@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- link to bootstrap official repos -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" 
+            rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" 
+            crossorigin="anonymous">
+    <title>Register Page</title>
+</head>
+<body>
+   <!-- link to bootstrap official repos -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" 
+        crossorigin="anonymous"></script>
+    <nav class="nav justify-content-end bg-dark navbar-dark navbar-extend-lg">
+        <a href="{{url_for('home')}}" class="nav-link link-light">Home</a>
+        <a href="{{url_for('login')}}" class="nav-link link-light">Login</a>
+        <a href="{{url_for('register')}}" class="nav-link link-light">Register</a>
+    </nav>
+
+    <div class="container">
+   <!-- form work with flask wtf form -->
+   <form method="POST" action="" class="py-3">
+    <h1 class="display-3">Register</h1>
+    <!-- this code generate a csrf protection token -->
+    {{form.csrf_token}}
+    {{form.hidden_tag()}}
+
+    <!-- username input box -->
+    <div class="form-group">
+    {{form.username.label(class_="py-2 font-monospace")}} <br> {{form.username(class_="form-control-sm")|e}}
+    {% if form.username.errors %}
+    <br>
+    {% for error in form.username.errors %}
+        <p class="font-monospace text-danger">{{ error }}</p>
+    {% endfor %}
+    {% endif %}
+    </div>
+
+    <!-- password input box -->
+    <div class="form-group">
+    {{form.password.label(class_="py-2 font-monospace")}} <br> {{form.password(class_="form-control-sm mr-3")|e}}
+    {% if form.password.errors %}
+    <br>
+    {% for error in form.password.errors %}
+        <p class="font-monospace text-danger">{{ error }}</p>
+    {% endfor %}
+    {% endif %}
+    </div>
+
+    <!-- submit button -->
+    <div class="py-4">
+    {{form.submit(class_="btn btn-secondary")}}
+    </div>
+
+   </form>
+
+    </div>
+</body>
+</html>

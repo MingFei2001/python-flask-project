@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" 
+            rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" 
+            crossorigin="anonymous">
+    <title>Delete Employee</title>
+</head>
+<body>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" 
+        crossorigin="anonymous"></script>
+    <nav class="nav justify-content-end bg-dark navbar-dark navbar-extend-lg">
+        <a href="{{url_for('home')}}" class="nav-link link-light">Home</a>
+        <a href="{{url_for('admin')}}"class="nav-link link-light">Admin</a>
+        <a href="{{url_for('logout')}}" class="nav-link link-light">Logout</a>
+    </nav>
+   
+    <div class="container">
+    <h1 class="diplay-1">Delete Employee</h1> 
+        <form action="/delete_employee/{{employee_to_delete.id}}" method="POST" class="card card-body">
+            <!-- {{form.hidden_tag()}}
+            {{form.csrf_token()}} -->
+            <p>Are you sure you want to delete the employee below?</p>
+            <p class="fw-bold"> {{employee_to_delete.name}} </p>
+            <p class="fw-bold"> {{employee_to_delete.nric}} </p>
+            {{form.submit(class_="btn btn-danger my-2")}} <br>
+            <a href="{{url_for('admin')}}" class="btn btn-secondary">Back to Admin Page</a>
+        </form>
+    </div>
+
+</body>
+</html>
